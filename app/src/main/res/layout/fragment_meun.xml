@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/rg_menu_week_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_monday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_monday"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <RadioButton
+                android:id="@+id/rb_tuesday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_tuesday"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <RadioButton
+                android:id="@+id/rb_wednesday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_wednesday"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <RadioButton
+                android:id="@+id/rb_thursday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_thursday"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <RadioButton
+                android:id="@+id/rb_friday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_friday"
+                android:textColor="@color/weekAndMeal_text" />
+            <RadioButton
+                android:id="@+id/rb_saturday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_saturday"
+                android:textColor="@color/weekAndMeal_text" />
+            <RadioButton
+                android:id="@+id/rb_sunday_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_week_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/menu_sunday"
+                android:textColor="@color/weekAndMeal_text" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3">
+
+        <RadioGroup
+            android:id="@+id/rg_meal_day_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_meal_breakfast"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_meal_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="早餐"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <ImageView
+                android:id="@+id/iv_meal_breakfast"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@mipmap/img_four_bi_three"
+                android:visibility="gone"
+                android:scaleType="centerCrop"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_meal_lunch"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_meal_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="午餐"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <ImageView
+                android:id="@+id/iv_meal_lunch"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@mipmap/img_four_bi_three"
+                android:visibility="gone"
+                android:scaleType="centerCrop"/>
+
+            <RadioButton
+                android:id="@+id/rb_meal_dinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/menu_rb_meal_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="晚餐"
+                android:textColor="@color/weekAndMeal_text" />
+
+            <ImageView
+                android:id="@+id/iv_meal_dinner"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@mipmap/img_four_bi_three"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</LinearLayout>

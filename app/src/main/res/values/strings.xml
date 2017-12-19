@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PICCDemo</string>
+    <string name="detail_bottom_share">分享</string>
+    <string name="detail_bottom_like">点赞</string>
+    <string name="detail_bottom_commit">评论</string>
+    <string name="comment_expand">收起</string>
+    <string name="menu_monday">星期一</string>
+    <string name="menu_tuesday">星期二</string>
+    <string name="menu_wednesday">星期三</string>
+    <string name="menu_thursday">星期四</string>
+    <string name="menu_friday">星期五</string>
+    <string name="menu_saturday">星期六</string>
+    <string name="menu_sunday">星期日</string>
+    <string name="select_week">星  期</string>
+    <string name="breakfast">早餐</string>
+    <string name="lunch">午餐</string>
+    <string name="dinner">晚餐</string>\
+    <string name="supper">宵夜</string>
+</resources>
+

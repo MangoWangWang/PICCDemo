@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><!--fitsSystemWindows 设置状态栏不显示-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!--app:contentInsetStart="0.0dp" 解决使用自定义属性留白问题
+      app:theme=" " view及其子view所使用的样式
+      app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"可以出水波纹
+      app:popupTheme=" " 推出菜单所使用的样式
+    -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar_main"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorTheme"
+        app:contentInsetStart="0.0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!--?attr/ " 随主题样式变化而变化-->
+        <FrameLayout
+            android:id="@+id/fl_title_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            >
+            <ImageView
+                android:id="@+id/iv_title_menu"
+                android:layout_width="23dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/titlebar_menu"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+        <RadioGroup
+            android:id="@+id/rg_home_viewpager_contorl_main"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/rb_home_pager_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableTop="@drawable/title_bar_disco"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_music_pager_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/title_bar_music" />
+
+            <RadioButton
+                android:id="@+id/rb_friends_pager_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableTop="@drawable/title_bar_friends"
+                />
+        </RadioGroup>
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:descendantFocusability="blocksDescendants" />
+    </FrameLayout>
+
+</LinearLayout>

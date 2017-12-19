@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPageBg"
+    >
+
+    <LinearLayout
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/ll_haden"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            >
+
+            <ImageView
+                android:id="@+id/nav_gif"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/backgroundsss"
+                android:scaleType="fitXY"
+                />
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="40dp"
+                android:id="@+id/nav_headPic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher" />
+            <TextView
+                android:id="@+id/nav_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MangoWang"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="110dp"
+                />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_theme_color"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/theme_color"
+                android:text="待定功能" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_personInfo"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/about_us"
+                android:text="个人信息" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_setting"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/setting"
+                android:text="设置" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_feedback"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/feedback"
+                android:text="意见反馈" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_exit_app"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/exit_app"
+                android:text="退出" />
+        </FrameLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

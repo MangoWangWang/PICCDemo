@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--orderInCategory 优先级属性 值越大优先级越低,用于判断是否显示在菜单栏上
+     showAsAction 通过情况判断是否显示在菜单栏上
+     -->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@mipmap/actionbar_search"
+        android:orderInCategory="100"
+        android:title="搜索"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="DayGroup">
+    <attr name="dayText" format="string"/>
+    <attr name="dayTextSize" format="dimension"/>
+    <attr name="dayTextColor" format="reference|color"/>
+    <attr name="breakfastBackground" format="reference|color"/>
+    <attr name="lunchBackground" format="reference|color"/>
+    <attr name="dinnerBackground" format="reference|color"/>
+    <attr name="supperBackground" format="reference|color"/>
+    <attr name="dayTextBackground" format="reference|color"/>
+</declare-styleable>
+
+
+    <declare-styleable name="PicAndTextBtn">
+        <attr name="pic" format="reference|color|integer"/>
+        <attr name="picBackground" format="reference|color"/>
+        <attr name="text" format="string"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textBackground" format="reference|color" />
+    </declare-styleable>
+
+</resources>
