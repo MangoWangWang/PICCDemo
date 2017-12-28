@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.piccjm.piccdemo.R;
 import com.piccjm.piccdemo.adapter.HomeFragmentPageAdapter;
+import com.piccjm.piccdemo.ui.fragment.gank.GankFragment;
 
 import java.util.ArrayList;
 
@@ -70,6 +71,6 @@ public class OrderMealFragment extends Fragment {
         mTitleList.add("菜单");
         mTitleList.add("订餐");
         mFragments.add(new MealFragment());
-        mFragments.add(new OrderFragment());
+        mFragments.add(new GankFragment());
     }
 }

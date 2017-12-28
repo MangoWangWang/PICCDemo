@@ -21,7 +21,7 @@ public interface OrderMealService {
     String HOST = "http://10.0.10.187:8080/";
 
     // 阿里云服务器地址IP地址
-    //String HOST = "http://120.79.62.147:8080/PiccLife";
+    //String HOST = "http://120.79.62.147:8080/PiccLife/";
 
     // 请求菜单
     @GET("servlet/GetMealStyleServlet")
@@ -29,7 +29,7 @@ public interface OrderMealService {
 
     // 请求已订阅的对象
     @GET("servlet/GetDateOrderServlet")
-    Observable<DateOrderBean> getDateOrderBean(@Query("card_number") String hrCode);
+    Observable<DateOrderBean> getDateOrderBean(@Query("card_number") String hrCode,@Query("date") String date);
 
 
     // 用于上传订单json到服务器中

@@ -8,17 +8,17 @@ import java.util.List;
 
 public class MealStyleBean {
 
-    private List<WeekBean> week;
+    private List< DayBean> week;
 
-    public List<WeekBean> getWeek() {
+    public List< DayBean> getWeek() {
         return week;
     }
 
-    public void setWeek(List<WeekBean> week) {
+    public void setWeek(List<DayBean> week) {
         this.week = week;
     }
 
-    public static class WeekBean {
+    public static class DayBean {
         /**
          * day : monday
          * meal : [{"image":"https://pic1.zhimg.com/v2-5974b7251c67747e6d2422164a6b2624.jpg","type":"breakfast","isOrder":false},{"image":"https://pic1.zhimg.com/v2-5974b7251c67747e6d2422164a6b2624.jpg","type":"lunch","isOrder":true},{"image":"https://pic1.zhimg.com/v2-5974b7251c67747e6d2422164a6b2624.jpg","type":"dinner","isOrder":true}]
@@ -26,6 +26,17 @@ public class MealStyleBean {
 
         private String day;
         private List<MealBean> meal;
+
+        private boolean openMeal;
+
+        public boolean isOpenMeal() {
+            return openMeal;
+        }
+
+        public void setOpenMeal(boolean openMeal) {
+            this.openMeal = openMeal;
+        }
+
 
         public String getDay() {
             return day;
@@ -45,21 +56,21 @@ public class MealStyleBean {
 
         public static class MealBean {
             /**
-             * image : https://pic1.zhimg.com/v2-5974b7251c67747e6d2422164a6b2624.jpg
+             * menuName : 腐竹焖猪脚
              * type : breakfast
              * isOrder : false
              */
-
-            private String image;
+            private String menuName;
             private String type;
             private boolean isOrder;
 
-            public String getImage() {
-                return image;
+
+            public String getMenuName() {
+                return menuName;
             }
 
-            public void setImage(String image) {
-                this.image = image;
+            public void setMenuName(String menuName) {
+                this.menuName = menuName;
             }
 
             public String getType() {

@@ -38,6 +38,8 @@ public class GlideUtils {
                 return R.mipmap.img_four_bi_three;
             case 3:
                 return R.mipmap.img_one_bi_one;
+            case 4:
+                return R.mipmap.img_my_bi;
         }
         return R.mipmap.img_four_bi_three;
     }

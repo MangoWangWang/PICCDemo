@@ -21,7 +21,7 @@ import butterknife.OnClick;
 
 public class OrderFragment extends BaseFragment<OrderPresenterImpl> implements OrderPresenter.View {
     private DateOrderBean mDateOrderBean;
-    private List<MealStyleBean.WeekBean> weekBeanList;
+    private List<MealStyleBean.DayBean> weekBeanList;
 
 
     @BindViews({R.id.dg_monday,R.id.dg_tuesday,R.id.dg_wednesday,R.id.dg_thursday,R.id.dg_friday,R.id.dg_saturday,R.id.dg_sunday})
@@ -66,7 +66,7 @@ public class OrderFragment extends BaseFragment<OrderPresenterImpl> implements O
 
         OrderMealFragment orderMealFragment = (OrderMealFragment) getParentFragment();
         MealFragment mealFragment = (MealFragment)orderMealFragment.getmFragments().get(0);
-        this.weekBeanList =  mealFragment.getWeekBeanList();
+      //  this.weekBeanList =  mealFragment.getWeekBeanList();
 //
 //        对数据进行分析
 
@@ -79,12 +79,12 @@ public class OrderFragment extends BaseFragment<OrderPresenterImpl> implements O
     private void checkIsOrderEnable() {
         for (int i = 0;i<weekBeanList.size();i++)
         {
-            MealStyleBean.WeekBean weekBean = weekBeanList.get(i);
-            List<MealStyleBean.WeekBean.MealBean> mealList =  weekBean.getMeal();
+            MealStyleBean.DayBean weekBean = weekBeanList.get(i);
+            List<MealStyleBean.DayBean.MealBean> mealList =  weekBean.getMeal();
             DayGroup dayGroup = dayGroupList.get(i);
             for (int j = 0 ;j < mealList.size();j++)
             {
-                MealStyleBean.WeekBean.MealBean mealBean = mealList.get(j);
+                MealStyleBean.DayBean.MealBean mealBean = mealList.get(j);
                 if (!mealBean.isIsOrder())
                 {
                     if (j==0)
@@ -113,15 +113,15 @@ public class OrderFragment extends BaseFragment<OrderPresenterImpl> implements O
         {
             DateOrderBean.MealOrderBean mealOrderBean = mealOrderList.get(i);
             DayGroup dayGroup = dayGroupList.get(i);
-            if (mealOrderBean.isBreakfast())
+            if (mealOrderBean.getBreakfast() !=0)
             {
                 dayGroup.cb_breakfast.setChecked(true);
             }
-            if (mealOrderBean.isLunch())
+            if (mealOrderBean.getLunch() !=0)
             {
                 dayGroup.cb_lunch.setChecked(true);
             }
-            if (mealOrderBean.isDinner())
+            if (mealOrderBean.getDinner() !=0)
             {
                 dayGroup.cb_dinner.setChecked(true);
             }
@@ -148,28 +148,28 @@ public class OrderFragment extends BaseFragment<OrderPresenterImpl> implements O
 
              if (dayGroup.cb_breakfast.isChecked())
              {
-                 dayOrderBean.setBreakfast(true);
+                 dayOrderBean.setBreakfast(1);
              }else
              {
-                 dayOrderBean.setBreakfast(false);
+                 dayOrderBean.setBreakfast(0);
              }
 
 
              if (dayGroup.cb_lunch.isChecked())
              {
-                 dayOrderBean.setLunch(true);
+                 dayOrderBean.setLunch(1);
              }else
              {
-                 dayOrderBean.setLunch(false);
+                 dayOrderBean.setLunch(0);
              }
 
 
              if (dayGroup.cb_dinner.isChecked())
              {
-                 dayOrderBean.setDinner(true);
+                 dayOrderBean.setDinner(1);
              }else
              {
-                 dayOrderBean.setDinner(false);
+                 dayOrderBean.setDinner(0);
              }
 
          }

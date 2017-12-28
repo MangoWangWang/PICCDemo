@@ -2,18 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipChildren="false"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_marginRight="5dp"
+        android:clipChildren="false"
         android:orientation="vertical">
 
         <RadioGroup
             android:id="@+id/rg_menu_week_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RadioButton
@@ -24,7 +27,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_monday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
 
             <RadioButton
                 android:id="@+id/rb_tuesday_menu"
@@ -34,7 +37,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_tuesday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
 
             <RadioButton
                 android:id="@+id/rb_wednesday_menu"
@@ -44,7 +47,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_wednesday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
 
             <RadioButton
                 android:id="@+id/rb_thursday_menu"
@@ -54,7 +57,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_thursday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
 
             <RadioButton
                 android:id="@+id/rb_friday_menu"
@@ -64,7 +67,8 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_friday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
+
             <RadioButton
                 android:id="@+id/rb_saturday_menu"
                 android:layout_width="match_parent"
@@ -73,7 +77,8 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_saturday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
+
             <RadioButton
                 android:id="@+id/rb_sunday_menu"
                 android:layout_width="match_parent"
@@ -82,81 +87,339 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/menu_sunday"
-                android:textColor="@color/weekAndMeal_text" />
+                android:textColor="@drawable/radiobutton_text_color" />
         </RadioGroup>
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
 
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3">
+        android:layout_weight="5">
 
         <RadioGroup
             android:id="@+id/rg_meal_day_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/rb_meal_breakfast"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/menu_rb_meal_background"
-                android:button="@null"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/breakfast_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/tabBackground" />
+
+                <Button
+                    android:id="@+id/button_breakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="@string/breakfast"
+                    android:textColor="@drawable/radiobutton_text_color" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/breakfast_image"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:id="@+id/breakfast_textView"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 android:gravity="center"
-                android:text="早餐"
-                android:textColor="@color/weekAndMeal_text" />
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-            <ImageView
-                android:id="@+id/iv_meal_breakfast"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@mipmap/img_four_bi_three"
-                android:visibility="gone"
-                android:scaleType="centerCrop"
-                />
+            </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/rb_meal_lunch"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/menu_rb_meal_background"
-                android:button="@null"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/lunch_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/tabBackground" />
+
+                <Button
+                    android:id="@+id/button_lunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="@string/lunch"
+                    android:textColor="@drawable/radiobutton_text_color" />
+
+            </LinearLayout>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/lunch_roulei_title"
+                android:layout_width="74dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/menu_tv_meal_background"
                 android:gravity="center"
-                android:text="午餐"
-                android:textColor="@color/weekAndMeal_text" />
+                android:text="@string/meat"
+                android:visibility="gone" />
 
-            <ImageView
-                android:id="@+id/iv_meal_lunch"
+            <LinearLayout
+                android:id="@+id/lunch_roulei_image"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@mipmap/img_four_bi_three"
-                android:visibility="gone"
-                android:scaleType="centerCrop"/>
+                android:layout_height="88dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-            <RadioButton
-                android:id="@+id/rb_meal_dinner"
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+
+            <RadioGroup
+                android:id="@+id/lunch_ruolei_radiogroup"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/menu_rb_meal_background"
-                android:button="@null"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="晚餐"
-                android:textColor="@color/weekAndMeal_text" />
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-            <ImageView
-                android:id="@+id/iv_meal_dinner"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@mipmap/img_four_bi_three"
-                android:scaleType="centerCrop"
+                <RadioButton
+                    android:id="@+id/lunch_one_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:textColor="@drawable/radiobutton_textcolor"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/lunch_two_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:textColor="@drawable/radiobutton_textcolor"
+                    android:textSize="14sp" />
+            </RadioGroup>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/lunch_shucai_title"
+                android:layout_width="74dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/menu_tv_meal_background"
+                android:gravity="center"
+                android:text="@string/vegetables"
                 android:visibility="gone" />
 
 
+            <LinearLayout
+                android:id="@+id/lunch_shucai_image"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                     />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lunch_shucai_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:gravity="center"
+                    android:text="菜心"
+                    android:textColor="@drawable/radiobutton_textcolor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:gravity="center"
+                    android:text="豆腐"
+                    android:textColor="@drawable/radiobutton_textcolor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/dinner_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/tabBackground" />
+
+                <Button
+                    android:id="@+id/button_dinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/dinner"
+                    android:textColor="@drawable/radiobutton_text_color" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/dinner_image"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                     />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/dinner_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:textColor="@drawable/radiobutton_textcolor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:gravity="center"
+                    android:textColor="@drawable/radiobutton_textcolor"
+                    android:textSize="14sp" />
+                />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/post_orderButton"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/menu_bt_meal_background"
+                android:text="提交"
+
+                />
+
         </RadioGroup>
 
-    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

@@ -14,7 +14,9 @@
     <string name="select_week">星  期</string>
     <string name="breakfast">早餐</string>
     <string name="lunch">午餐</string>
-    <string name="dinner">晚餐</string>\
+    <string name="dinner">晚餐</string>
+    <string name="meat">肉食</string>
+    <string name="vegetables">蔬菜</string>
     <string name="supper">宵夜</string>
 </resources>
 

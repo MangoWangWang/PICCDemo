@@ -5,7 +5,6 @@ import com.piccjm.piccdemo.bean.DateOrderBean;
 import com.piccjm.piccdemo.http.utils.Callback;
 import com.piccjm.piccdemo.http.utils.RetrofitMealOrderUtils;
 import com.piccjm.piccdemo.presenter.base.BasePresenter;
-import com.piccjm.piccdemo.ui.activity.MainActivity;
 
 import javax.inject.Inject;
 
@@ -36,16 +35,16 @@ public class OrderPresenterImpl extends BasePresenter<OrderPresenter.View> imple
 
     @Override
     public void fetchDateOrderList() {
-        invoke(mRetrofitMealOrderUtils.fetchDateOrderInfo(MainActivity.CardNumber),new Callback<DateOrderBean>()
-                {
-                    @Override
-                    public void onResponse(DateOrderBean data) {
-                        dateOrder = data;
-                        mLifeSubscription.refresh();
-                    }
-                }
-
-        );
+//        invoke(mRetrofitMealOrderUtils.fetchDateOrderInfo(MainActivity.CardNumber,),new Callback<DateOrderBean>()
+//                {
+//                    @Override
+//                    public void onResponse(DateOrderBean data) {
+//                        dateOrder = data;
+//                        mLifeSubscription.refresh();
+//                    }
+//                }
+//
+//        );
     }
 
     // 用于fragment中加载调用
@@ -57,7 +56,7 @@ public class OrderPresenterImpl extends BasePresenter<OrderPresenter.View> imple
     {
         Gson gson = new Gson();
         String DateOrderString =  gson.toJson(dateOrderBean);
-        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),DateOrderString);
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),DateOrderString);
         invoke(mRetrofitMealOrderUtils.PutDateOrderInfo(body),new Callback<String>(){
 
             @Override

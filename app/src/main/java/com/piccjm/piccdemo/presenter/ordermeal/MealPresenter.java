@@ -1,5 +1,6 @@
 package com.piccjm.piccdemo.presenter.ordermeal;
 
+import com.piccjm.piccdemo.bean.DateOrderBean;
 import com.piccjm.piccdemo.http.LifeSubscription;
 
 /**
@@ -11,6 +12,8 @@ public interface MealPresenter {
     // 用于View的数据刷新 和进行生命周期的绑定
     interface View extends LifeSubscription {
         void refresh();
+        void PostOrderResult(String result);
+        void setSelectedCheckBoxAndRadioButton(DateOrderBean dateOrderFromService);
         // void bindSubscription(Subscription subscription);
     }
 

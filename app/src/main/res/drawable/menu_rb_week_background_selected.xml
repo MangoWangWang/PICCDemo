@@ -1,35 +1,23 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<shape xmlns:android="http://schemas.android.com/apk/res/android">-->
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--&lt;!&ndash; 实心 &ndash;&gt;-->
-    <!--<solid android:color="#f7d6ab"/>-->
-    <!--&lt;!&ndash; 边框 &ndash;&gt;-->
-    <!--<stroke-->
-        <!--android:width="0dp"-->
-        <!--android:color="#949292"/>-->
-    <!--&lt;!&ndash; 圆角 &ndash;&gt;-->
-    <!--<corners android:radius="0dp"/>-->
-    <!--&lt;!&ndash; 边距 &ndash;&gt;-->
-    <!--<padding-->
-        <!--android:top="0dp"-->
-        <!--android:bottom="0dp"-->
-        <!--android:left="0dp"-->
-        <!--android:right="0dp"/>-->
-<!--</shape>-->
+    <!-- 实心 -->
+    <solid android:color="#f7d6ab"/>
+    <!-- 边框 -->
+    <stroke
+        android:width="0dp"
+        android:color="#949292"/>
+    <!-- 圆角 -->
+    <corners
+        android:topLeftRadius="0dp"
+        android:topRightRadius="88dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="88dp" />
+    <!-- 边距 -->
+    <padding
+        android:top="0dp"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"/>
+</shape>
 
-
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-<item
-    android:top="-3dp"
-    android:left="-3dp"
-    android:right="-3dp">
-    <shape>
-        <solid android:color="#f7d6ab"/>
-        <stroke
-            android:width="2dp"
-            android:color="#B4B4B4"/>
-    </shape>
-</item>
-
-</layer-list>

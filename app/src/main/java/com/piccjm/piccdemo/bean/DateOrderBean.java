@@ -36,46 +36,58 @@ public class DateOrderBean {
     public static class MealOrderBean {
         /**
          * time : 2017-11-27
-         * breakfast : true
-         * lunch : false
-         * dinner : false
+         * breakfast : 1
+         * lunch : 1
+         * dinner : 1
          */
 
-        private String time;
-        private boolean breakfast;
-        private boolean lunch;
-        private boolean dinner;
+        private String date;
+        private String orderTime;
+        private int breakfast;
+        private int lunch;
+        private int dinner;
 
-        public String getTime() {
-            return time;
-        }
-
-        public void setTime(String time) {
-            this.time = time;
-        }
-
-        public boolean isBreakfast() {
+        public int getBreakfast() {
             return breakfast;
         }
 
-        public void setBreakfast(boolean breakfast) {
+        public void setBreakfast(int breakfast) {
             this.breakfast = breakfast;
         }
 
-        public boolean isLunch() {
+        public int getLunch() {
             return lunch;
         }
 
-        public void setLunch(boolean lunch) {
+        public void setLunch(int lunch) {
             this.lunch = lunch;
         }
 
-        public boolean isDinner() {
+        public int getDinner() {
             return dinner;
         }
 
-        public void setDinner(boolean dinner) {
+        public void setDinner(int dinner) {
             this.dinner = dinner;
         }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public String getOrderTime() {
+            return orderTime;
+        }
+
+        public void setOrderTime(String orderTime) {
+            this.orderTime = orderTime;
+        }
+
+
+
     }
 }

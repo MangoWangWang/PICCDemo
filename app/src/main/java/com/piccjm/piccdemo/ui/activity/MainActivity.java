@@ -28,7 +28,7 @@ import com.piccjm.piccdemo.dagger.module.ActivityModule;
 import com.piccjm.piccdemo.ui.activity.base.BaseActivity;
 import com.piccjm.piccdemo.ui.activity.slide.PersonInfoActivity;
 import com.piccjm.piccdemo.ui.fragment.gank.GankFragment;
-import com.piccjm.piccdemo.ui.fragment.home.OrderMealFragment;
+import com.piccjm.piccdemo.ui.fragment.home.MealFragment;
 import com.piccjm.piccdemo.utils.GlideUtils;
 
 import java.util.ArrayList;
@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity {
         });
         List<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(new GankFragment());
-        mFragmentList.add(new OrderMealFragment());
+        mFragmentList.add(new MealFragment());
         mFragmentList.add(new GankFragment());
         vpContent.setAdapter(new HomeFragmentPageAdapter(getSupportFragmentManager(), mFragmentList));
         vpContent.setCurrentItem(1);

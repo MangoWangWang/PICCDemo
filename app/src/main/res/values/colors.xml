@@ -5,7 +5,7 @@
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="colorTheme">#ffce3d3a</color>
+    <color name="colorTheme">#5db9ff</color>
     <color name="colorWhite">#ffffffff</color>
 
     <color name="black">#000</color>
@@ -71,13 +71,14 @@
     <color name="colorLine">#c9c8c8</color>
 
     <!--星期和三餐文字颜色-->
-    <color name="weekAndMeal_text">#6e6d6d</color>
+    <color name="weekAndMeal_text">#7e7e7e</color>
+    <color name="weekAndMeal_text_selected">#bf2222</color>
 
     <!--性别弹出框的颜色 -->
     <color name="transparent">#000000</color>
     <color name="color_bg_selected">#c1c1c1</color>
     <color name="color_bg_normal">#ffffff</color>
-    <color name="color_text_selected">#ffffff</color>
-    <color name="color_text_normal">#000000</color>
+    <color name="color_text_selected">#bc4141</color>
+    <color name="color_text_normal">#7e7e7e</color>
 
 </resources>
