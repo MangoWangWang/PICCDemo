@@ -5,19 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.piccjm.piccdemo.ui.view.PicAndTextBtn
-        android:id="@+id/patb_headPic"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorWhite"
-        android:paddingRight="10dp"
-        app:pic="@mipmap/ic_launcher"
-        app:text="头像"
-        app:textColor="#000000"
-        app:textSize="6sp" />
-
     <LinearLayout
+        android:id="@+id/linear_head"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="1dp"
@@ -26,17 +15,42 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:text="头像"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+       <ImageView
+           android:id="@+id/linear_image_head"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:layout_marginRight="10dp"
+           />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorWhite"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="10dp"
             android:text="昵称"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/linear_nickname"
+            android:id="@+id/linear_tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -47,7 +61,7 @@
 
 
     <LinearLayout
-
+        android:id="@+id/linear_name"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="1dp"
@@ -63,10 +77,10 @@
             android:paddingLeft="10dp"
             android:text="名字"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/linear_name"
+            android:id="@+id/linear_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -76,20 +90,8 @@
     </LinearLayout>
 
 
-    <com.piccjm.piccdemo.ui.view.PicAndTextBtn
-        android:id="@+id/patb_QRcode"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="1dp"
-        android:background="@color/colorWhite"
-        android:paddingRight="15dp"
-        app:pic="@mipmap/ic_launcher"
-        app:text="二维码名片"
-        app:textColor="#000000"
-        app:textSize="6sp" />
-
     <LinearLayout
-
+        android:id="@+id/linear_birthday"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="1dp"
@@ -104,10 +106,10 @@
             android:paddingLeft="10dp"
             android:text="生日"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/linear_birthday"
+            android:id="@+id/linear_tv_birthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="15dp"
@@ -118,7 +120,6 @@
     </LinearLayout>
 
     <LinearLayout
-
         android:id="@+id/linear_sex"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -134,7 +135,7 @@
             android:paddingLeft="10dp"
             android:text="性别"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/linear_tv_sex"
@@ -146,6 +147,7 @@
             android:textSize="16sp" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/linear_password"
         android:clickable="true"
         android:focusable="true"
         android:layout_width="match_parent"
@@ -162,10 +164,10 @@
             android:paddingLeft="10dp"
             android:text="密码"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/linear_password"
+            android:id="@+id/linear_tv_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

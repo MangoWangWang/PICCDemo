@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.piccjm.piccdemo.R;
 import com.piccjm.piccdemo.app.App;
+import com.piccjm.piccdemo.bean.other.UserManage;
 import com.piccjm.piccdemo.dagger.component.ActivityComponent;
 import com.piccjm.piccdemo.dagger.component.DaggerActivityComponent;
 import com.piccjm.piccdemo.dagger.module.ActivityModule;
@@ -43,13 +44,16 @@ public class LoginActivity extends AppCompatActivity  {
         @Override
         public void onSuccess(String status) {
             int result = Integer.parseInt(status);
-            if(result == 1)
+            if(result == 1) // 返回1,表示密码正确,登录成功
             {
+                // 保存密码到SharedPreferences
+                saveUserInfo();
                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 intent.putExtra("CardNumber", user_login_edit.getText().toString());
                 startActivity(intent);
-            }else if (result == 0)
+                finish();
+            }else if (result == 0) // 返回0 ,表示密码或账户错误
             {
                 Toast.makeText(LoginActivity.this, "账户或密码错误", Toast.LENGTH_SHORT).show();
             }
@@ -109,29 +113,13 @@ public class LoginActivity extends AppCompatActivity  {
         return new ActivityModule(this);
     }
 
-//    private void initRetrofit(){
-//        // 开始初始化retrofit
-//        retrofit = new Retrofit.Builder()
-//                .baseUrl(HOST)
-//                //.addConverterFactory(GsonConverterFactory.create())
-//                .addConverterFactory(ScalarsConverterFactory.create())
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-//                .build();
-//        // 实例化retrofit的请求接口
-//        loginService = retrofit.create(LoginService.class);
-//
-//
-//
-//    }
-//
-//
-//    //这里就是绑定观察者和被观察者的操作
-//    private void InitRxJava2(Subscriber<String> loginSubscriber) {
-//        Subscription subscription =  loginObservable.subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(loginSubscriber);
-//        mCompositeSubscription.add(subscription);
-//    }
+    protected void saveUserInfo()
+    {
+        String userName = user_login_edit.getText().toString();
+        String userPwd = password_login_edit.getText().toString();
+        UserManage.getInstance().saveUserInfo(LoginActivity.this, userName, userPwd);
+    }
+
 
 
 

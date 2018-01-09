@@ -33,7 +33,7 @@ public class PersonInfoActivity extends BaseActivity {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         // 调用BaseActivity的onCreate方法
         // 1.去除标题
         // 2.setContentView,通过调用getLayoutId方法

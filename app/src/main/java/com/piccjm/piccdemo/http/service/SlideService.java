@@ -1,8 +1,14 @@
 package com.piccjm.piccdemo.http.service;
 
+import com.piccjm.piccdemo.bean.MealStyleBean;
 import com.piccjm.piccdemo.bean.UserBean;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -23,4 +29,13 @@ public interface SlideService {
 
     @GET("servlet/UpdatePersonInfoServlet")
     Observable<String> updatePerSonInfo(@Query("cardNumber")String cardNumber,@Query("columnName")String columnName,@Query("data")String data);
+
+    // 请求菜单
+    @GET("servlet/GetMealStyleServlet")
+    Observable<MealStyleBean> getMealStyleBean(@Query("week") String week);
+
+    @Multipart
+    @POST("servlet/UploadImageServlet")
+    Observable<String> upload(@Part("description") RequestBody description,
+                              @Part MultipartBody.Part file);
 }

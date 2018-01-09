@@ -12,7 +12,7 @@ import com.piccjm.piccdemo.R;
  * Created by mangowangwang on 2017/10/23.
  */
 
-public class GlideUtils {
+public class GlideUtils<T> {
 
     /**
      * 首页zhihu item读取图片
@@ -53,5 +53,16 @@ public class GlideUtils {
         //使用Glide加载圆形ImageView(如头像)时，不要使用占位图
         Glide.with(mContext).load(resouceId).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
     }
+
+    public static void loadCircleImage(Context mContext, Object object, ImageView imageView)
+    {
+        Glide.with(mContext).load(object)
+                //
+                .transform(new GlideCircleTransform(mContext))
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView);
+    }
+
 
 }

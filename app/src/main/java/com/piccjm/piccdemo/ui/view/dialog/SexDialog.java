@@ -1,4 +1,4 @@
-package com.piccjm.piccdemo.ui.view;
+package com.piccjm.piccdemo.ui.view.dialog;
 
 /**
  * Created by mangowangwang on 2017/12/15.

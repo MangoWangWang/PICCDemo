@@ -2,6 +2,8 @@ package com.piccjm.piccdemo.presenter.slide;
 
 import com.piccjm.piccdemo.http.LifeSubscription;
 
+import java.io.File;
+
 /**
  * Created by mangowangwang on 2017/12/12.
  */
@@ -13,11 +15,13 @@ public interface PersonInfoPresenter {
         void refresh();
         void resultOfSexUpdate(String result);
         void resultOfError();
+        void resultOfUploadHeadImage(String result);
         // void bindSubscription(Subscription subscription);
     }
 
     interface Presenter{
         void fetchPersonInfo();
         void updatePersonInfo(String columnName,String data);
+        void uploadPersonHead(File file);
     }
 }

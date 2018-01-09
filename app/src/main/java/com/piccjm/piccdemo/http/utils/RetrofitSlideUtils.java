@@ -1,8 +1,11 @@
 package com.piccjm.piccdemo.http.utils;
 
+import com.piccjm.piccdemo.bean.MealStyleBean;
 import com.piccjm.piccdemo.bean.UserBean;
 import com.piccjm.piccdemo.http.service.SlideService;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 /**
@@ -26,6 +29,20 @@ public class RetrofitSlideUtils {
     public Observable<String> updatePersonInfo(String hrCode,String columnName,String data)
     {
         return mslideService.updatePerSonInfo(hrCode,columnName,data);
+    }
+
+    public Observable<MealStyleBean> fetchThisWeekMenuInfo()
+    {
+        return mslideService.getMealStyleBean("this");
+    }
+    public Observable<MealStyleBean> fetchNextWeekMenuInfo()
+    {
+        return mslideService.getMealStyleBean("next");
+    }
+
+    public Observable<String> uploadHeadImageToService(RequestBody description, MultipartBody.Part file)
+    {
+        return mslideService.upload(description, file);
     }
 
 }

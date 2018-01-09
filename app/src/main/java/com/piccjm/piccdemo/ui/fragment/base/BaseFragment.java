@@ -222,7 +222,9 @@ public abstract class BaseFragment <P extends BasePresenter> extends Fragment im
     @Override
     public void onDetach() {
         super.onDetach();
-        bind.unbind();
+        if (bind != null) {
+            bind.unbind();
+        }
         if (this.mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
             this.mCompositeSubscription.unsubscribe();
         }

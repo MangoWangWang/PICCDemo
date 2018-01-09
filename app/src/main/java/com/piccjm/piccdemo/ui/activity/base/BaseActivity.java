@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity implements LifeSubs
     protected abstract int getLayoutId();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  // 去除标题
         setContentView(getLayoutId());

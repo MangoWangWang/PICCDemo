@@ -6,6 +6,7 @@ import com.piccjm.piccdemo.dagger.module.ActivityModule;
 import com.piccjm.piccdemo.dagger.scope.ActivityScope;
 import com.piccjm.piccdemo.ui.activity.LoginActivity;
 import com.piccjm.piccdemo.ui.activity.MainActivity;
+import com.piccjm.piccdemo.ui.activity.WelcomeActivity;
 import com.piccjm.piccdemo.ui.activity.slide.PersonInfoActivity;
 
 import dagger.Component;
@@ -24,5 +25,6 @@ public interface ActivityComponent {
     void inject(LoginActivity loginActivity);  // 对activity进行绑定
     void inject(MainActivity mainActivity);
     void inject(PersonInfoActivity personInfoActivity);
+    void inject(WelcomeActivity welcomeActivity);
 
 }

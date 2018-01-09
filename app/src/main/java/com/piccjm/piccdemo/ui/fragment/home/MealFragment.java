@@ -1,6 +1,7 @@
 package com.piccjm.piccdemo.ui.fragment.home;
 
 import android.support.annotation.IdRes;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
@@ -75,6 +76,9 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
     CheckBox dinner_checkbox;
 
 
+    private float density;
+
+
     @OnClick(R.id.button_breakfast)
     public void openOrShutBreakfastView(){
         visibleBreakfastView();
@@ -97,11 +101,11 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         if (isSelectedDay)
         {
             mPresenter.PostDateOrder(selectedDateOrderBean());
-        }else 
+        }else
         {
             Toast.makeText(getContext(), "请先选择星期几!", Toast.LENGTH_SHORT).show();
         }
-        
+
     }
 
     // 获得的每日菜单
@@ -112,7 +116,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
     // 点击星期的日期
     private String selected_date;
-    
+
     // 判断日期按钮是否被选中,确定按钮是否可以提交
     private boolean isSelectedDay = false;
 
@@ -139,6 +143,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
     @Override
     protected void initView() {
+        getDensity();
         weekGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
@@ -155,6 +160,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         });
         setCheckboxChangeListener();
         setLunchRadioButtonListener();
+
 
     }
 
@@ -229,7 +235,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
             {
                 Params =(RadioGroup.LayoutParams) dayButton.getLayoutParams(); //取控件textView当前的布局参数
                 //Params.height = 20;// 控件的高强制设成20
-                Params.width = 265;// 控件的宽强制设成30
+                Params.width = (int) (88*density);// 控件的宽强制设成30
                 dayButton.setLayoutParams(Params);
             }
         }
@@ -237,7 +243,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         RadioButton radioButton = (RadioButton)radioGroup.findViewById(i);
         Params =(RadioGroup.LayoutParams) radioButton.getLayoutParams(); //取控件textView当前的布局参数
         //Params.height = 20;// 控件的高强制设成20
-        Params.width = 300;// 控件的宽强制设成30
+        Params.width = (int) (100*density);// 控件的宽强制设成30
         radioButton.setLayoutParams(Params); //使设置好的布局参数应用到控件
         position = positionOfClickOnWeek(radioButton.getText().toString());
 
@@ -568,6 +574,11 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
     }
 
+    private void getDensity() {
+        DisplayMetrics metric = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+        density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
+    }
 
 
 

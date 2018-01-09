@@ -12,6 +12,15 @@ public class UserBean {
     private String birthday;
     private String sex;
     private String nickname;
+    private String head_image;
+
+    public String getHead_image() {
+        return head_image;
+    }
+
+    public void setHead_image(String head_image) {
+        this.head_image = head_image;
+    }
 
     public String getHr_code() {
         return hr_code;

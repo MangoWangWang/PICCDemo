@@ -24,7 +24,7 @@ public class RetrofitMealOrderUtils {
 
     public Observable<MealStyleBean> fetchMealStyleInfo()
     {
-        return mOrderMealService.getMealStyleBean();
+        return mOrderMealService.getMealStyleBean("this");
     }
 
     public Observable<DateOrderBean> fetchDateOrderInfo(String hrCode,String date)

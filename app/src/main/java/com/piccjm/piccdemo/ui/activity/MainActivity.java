@@ -27,6 +27,7 @@ import com.piccjm.piccdemo.dagger.component.DaggerActivityComponent;
 import com.piccjm.piccdemo.dagger.module.ActivityModule;
 import com.piccjm.piccdemo.ui.activity.base.BaseActivity;
 import com.piccjm.piccdemo.ui.activity.slide.PersonInfoActivity;
+import com.piccjm.piccdemo.ui.activity.slide.WeekMenuActivity;
 import com.piccjm.piccdemo.ui.fragment.gank.GankFragment;
 import com.piccjm.piccdemo.ui.fragment.home.MealFragment;
 import com.piccjm.piccdemo.utils.GlideUtils;
@@ -64,6 +65,13 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.fl_week_menu)
+    public void StartWeekMenu()
+    {
+        Intent intent = new Intent(this,WeekMenuActivity.class);
+        startActivity(intent);
+    }
+
     // 顶部三个控制图标的集合(RadioGroup)
     @BindView(R.id.rg_home_viewpager_contorl_main)
     RadioGroup rgHomeViewpagerContorl;
@@ -75,6 +83,8 @@ public class MainActivity extends BaseActivity {
     // 给title_menu添加监听方法
     @OnClick(R.id.fl_title_menu)
     public void flTitleMenu() {
+        ImageView imageView = (ImageView) findViewById(R.id.nav_headPic);
+        GlideUtils.loadCircleImage(getApplicationContext(),R.mipmap.head_one,imageView);
         dlLayout.openDrawer(GravityCompat.START);
     }
 
@@ -85,7 +95,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         // 调用BaseActivity的onCreate方法
         // 1.去除标题
         // 2.setContentView,通过调用getLayoutId方法
