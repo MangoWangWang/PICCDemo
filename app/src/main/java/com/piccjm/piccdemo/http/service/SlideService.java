@@ -1,5 +1,6 @@
 package com.piccjm.piccdemo.http.service;
 
+import com.piccjm.piccdemo.bean.DateOrderBean;
 import com.piccjm.piccdemo.bean.MealStyleBean;
 import com.piccjm.piccdemo.bean.UserBean;
 
@@ -19,7 +20,7 @@ import rx.Observable;
 public interface SlideService {
 
     // 本地服务器请求地址的baseUrl
-    //String HOST = "http://10.0.10.187:8080/";
+   // String HOST = "http://10.0.10.187:8080/";
 
     // 阿里云服务器地址IP地址
     String HOST = "http://120.79.62.147:8080/PiccLife/";
@@ -38,4 +39,8 @@ public interface SlideService {
     @POST("servlet/UploadImageServlet")
     Observable<String> upload(@Part("description") RequestBody description,
                               @Part MultipartBody.Part file);
+
+    @GET("servlet/GetHistoryOrderServlet")
+    Observable<DateOrderBean> getHistoryOrderInfoBean(@Query("cardNumber") String cardNumber);
+
 }

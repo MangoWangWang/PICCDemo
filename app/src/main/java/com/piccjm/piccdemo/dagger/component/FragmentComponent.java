@@ -6,6 +6,7 @@ import com.piccjm.piccdemo.dagger.module.FragmentModule;
 import com.piccjm.piccdemo.dagger.scope.FragmentScope;
 import com.piccjm.piccdemo.ui.fragment.home.MealFragment;
 import com.piccjm.piccdemo.ui.fragment.home.OrderFragment;
+import com.piccjm.piccdemo.ui.fragment.slide.HistoryOrderFragment;
 import com.piccjm.piccdemo.ui.fragment.slide.PersonInfoFragment;
 import com.piccjm.piccdemo.ui.fragment.slide.WeekMenuFragment;
 
@@ -25,5 +26,6 @@ public interface FragmentComponent {
     void inject (OrderFragment orderFragment);
     void inject (PersonInfoFragment personInfoFragment);
     void inject (WeekMenuFragment weekMenuFragment);
+    void inject (HistoryOrderFragment historyOrderFragment);
 
 }

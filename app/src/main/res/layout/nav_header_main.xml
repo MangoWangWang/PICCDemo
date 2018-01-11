@@ -53,6 +53,15 @@
                 android:text="菜单预览" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/fl_history"
+            style="@style/home.fragment">
+
+            <TextView
+                style="@style/home.textview"
+                android:drawableLeft="@drawable/ic_history"
+                android:text="历史记录" />
+        </FrameLayout>
+        <FrameLayout
             android:id="@+id/fl_personInfo"
             style="@style/home.fragment">
 

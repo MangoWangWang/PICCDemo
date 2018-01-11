@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:background="#a6a6a6"
+    >
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:text="今天"
+        android:textColor="@color/black"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/tv_ho_header_date"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:text="2017/02/21"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        />
+    <LinearLayout
+
+        android:gravity="right"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="44dp">
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_ho_header_breakfast"
+            android:background="@drawable/history_bf_tv_bg"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="10dp"
+            android:text="早"
+            android:textColor="@color/colorWhite"
+            />
+
+        <TextView
+
+            android:visibility="gone"
+            android:background="@drawable/history_lu_tv_bg"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_ho_header_lunch"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="中" />
+
+        <TextView
+            android:visibility="gone"
+            android:background="@drawable/history_di_tv_bg"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tv_ho_header_dinner"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="晚" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

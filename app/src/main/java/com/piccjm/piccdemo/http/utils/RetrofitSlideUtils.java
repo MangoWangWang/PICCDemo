@@ -1,5 +1,6 @@
 package com.piccjm.piccdemo.http.utils;
 
+import com.piccjm.piccdemo.bean.DateOrderBean;
 import com.piccjm.piccdemo.bean.MealStyleBean;
 import com.piccjm.piccdemo.bean.UserBean;
 import com.piccjm.piccdemo.http.service.SlideService;
@@ -44,5 +45,11 @@ public class RetrofitSlideUtils {
     {
         return mslideService.upload(description, file);
     }
+
+    public Observable<DateOrderBean> fetchHistoryOrderInfo(String hrCode)
+    {
+        return mslideService.getHistoryOrderInfoBean(hrCode);
+    }
+
 
 }

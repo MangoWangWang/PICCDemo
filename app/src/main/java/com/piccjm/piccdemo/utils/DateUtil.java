@@ -16,12 +16,31 @@ import static java.lang.System.currentTimeMillis;
 public class DateUtil {
 
     /**
+     * 获取当前日期的星期
+     * @return
+     */
+    public static String getDayOfWeekFromDate(String dateString)
+    {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = format.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        format.applyPattern("EEEE");
+        return format.format(date);
+    }
+
+
+
+    /**
      * 获取当前日期
      * @return
      */
     public static String getCurrentDate()
     {
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         return df.format(new Date());
     }
 

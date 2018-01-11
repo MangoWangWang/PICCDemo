@@ -26,6 +26,7 @@ import com.piccjm.piccdemo.dagger.component.ActivityComponent;
 import com.piccjm.piccdemo.dagger.component.DaggerActivityComponent;
 import com.piccjm.piccdemo.dagger.module.ActivityModule;
 import com.piccjm.piccdemo.ui.activity.base.BaseActivity;
+import com.piccjm.piccdemo.ui.activity.slide.HistoryOrderActivity;
 import com.piccjm.piccdemo.ui.activity.slide.PersonInfoActivity;
 import com.piccjm.piccdemo.ui.activity.slide.WeekMenuActivity;
 import com.piccjm.piccdemo.ui.fragment.gank.GankFragment;
@@ -66,9 +67,14 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.fl_week_menu)
-    public void StartWeekMenu()
-    {
+    public void StartWeekMenu() {
         Intent intent = new Intent(this,WeekMenuActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.fl_history)
+    public void StartHistoryOrderInfo() {
+        Intent intent = new Intent(this,HistoryOrderActivity.class);
         startActivity(intent);
     }
 
