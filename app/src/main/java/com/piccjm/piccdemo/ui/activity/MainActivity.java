@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.fl_title_menu)
     public void flTitleMenu() {
         ImageView imageView = (ImageView) findViewById(R.id.nav_headPic);
-        GlideUtils.loadCircleImage(getApplicationContext(),R.mipmap.head_one,imageView);
+        GlideUtils.loadCircleImage(this,R.mipmap.head_one,imageView);
         dlLayout.openDrawer(GravityCompat.START);
     }
 

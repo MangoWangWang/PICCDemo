@@ -15,6 +15,27 @@ import static java.lang.System.currentTimeMillis;
 
 public class DateUtil {
 
+    public static String getWeekOfDate(Date dt) {
+        String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dt);
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        return weekDays[w];
+    }
+
+
+        public static int getHourOfDay(Date dt) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dt);
+            int hour = cal.get(Calendar.HOUR_OF_DAY);
+            return hour;
+
+        }
+
+
+
     /**
      * 获取当前日期的星期
      * @return
@@ -33,6 +54,16 @@ public class DateUtil {
     }
 
 
+    /**
+     * 获取当前日期
+     * @param format  日期格式
+     * @return
+     */
+    public static String getCurrentDate(String format)
+    {
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        return df.format(new Date());
+    }
 
     /**
      * 获取当前日期

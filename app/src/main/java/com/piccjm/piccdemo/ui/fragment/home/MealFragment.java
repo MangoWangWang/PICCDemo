@@ -19,8 +19,10 @@ import com.piccjm.piccdemo.bean.MealStyleBean;
 import com.piccjm.piccdemo.presenter.ordermeal.MealPresenter;
 import com.piccjm.piccdemo.presenter.ordermeal.MealPresenterImpl;
 import com.piccjm.piccdemo.ui.fragment.base.BaseFragment;
+import com.piccjm.piccdemo.utils.DateUtil;
 import com.piccjm.piccdemo.utils.GlideUtils;
 
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -35,6 +37,9 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
     //String imageHost = "http://10.0.10.187:8080/Breakfast/";
     String breakfastImageHost = "http://120.79.62.147:8080/PiccLife/Breakfast/";
     String lunchAndDinnerImageHost = "http://120.79.62.147:8080/PiccLife/LunchAndDinner/";
+
+    private final static int SETTING_TIME = 9 ;
+    public static final int TOTLE_DAYS = 7;
 
     @BindView(R.id.breakfast_image)
     LinearLayout breakfastImages;
@@ -65,7 +70,6 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
     RadioButton lunch_two_radioButton;
 
 
-
     @BindView(R.id.dinner_image)
     LinearLayout dinnerImages;
     @BindView(R.id.dinner_textView)
@@ -80,39 +84,37 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
 
     @OnClick(R.id.button_breakfast)
-    public void openOrShutBreakfastView(){
+    public void openOrShutBreakfastView() {
         visibleBreakfastView();
     }
 
 
     @OnClick(R.id.button_lunch)
-    public void openOrShutLunchView(){
+    public void openOrShutLunchView() {
         visibleLunchView();
     }
 
 
     @OnClick(R.id.button_dinner)
-    public void openOrShutDinnerView(){
+    public void openOrShutDinnerView() {
         visibleDinnerView();
     }
 
     @OnClick(R.id.post_orderButton)
     public void postOrder() {
-        if (isSelectedDay)
-        {
+        if (isSelectedDay) {
             mPresenter.PostDateOrder(selectedDateOrderBean());
-        }else
-        {
+        } else {
             Toast.makeText(getContext(), "请先选择星期几!", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     // 获得的每日菜单
-    private List< MealStyleBean.DayBean> days ;
+    private List<MealStyleBean.DayBean> days;
 
     // 点击星期的位置
-    private  int position;
+    private int position;
 
     // 点击星期的日期
     private String selected_date;
@@ -121,12 +123,12 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
     private boolean isSelectedDay = false;
 
     // 三个代表checkbox能否被选中的值 0:未选中 1:选中 2:午餐专用(类型Two)
-    private int cb_breakfast_status = 0 ;
-    private int cb_lunch_status = 0 ;
-    private int cb_dinner_status = 0 ;
+    private int cb_breakfast_status = 0;
+    private int cb_lunch_status = 0;
+    private int cb_dinner_status = 0;
 
     // 代表午餐radioButton的选中值 0:未选中 1: 选中第一个 2:选中第二个
-    private int rb_lunch_status = 0 ;
+    private int rb_lunch_status = 0;
 
     private DateOrderBean dateOrderBean;
 
@@ -171,29 +173,53 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
     @Override
     public void refresh() {
+
         // 1.获得服务器返回的数据
         days = mPresenter.getDayOfWeekList();
+        todayOrTomorrow();
         dayOfOpenMeal();
+
+
+    }
+
+    /**
+     * 判断时间点有没有超过每天的10点钟
+     */
+    private void todayOrTomorrow() {
+        Date today = new Date();
+        String weekOfDate = DateUtil.getWeekOfDate(today);
+        for (int position = 0 ; position < TOTLE_DAYS; position++) {
+            RadioButton rb = (RadioButton) weekGroup.getChildAt(position);
+            boolean equals = rb.getText().equals(weekOfDate);
+            if (equals) {
+                if (DateUtil.getHourOfDay(today) <= SETTING_TIME) {
+                    rb.setEnabled(true);
+                } else {
+                    rb.setEnabled(false);
+                    weekGroup.getChildAt(position + 1).setEnabled(true);
+                    position = position + 1;
+                }
+            } else {
+                rb.setEnabled(false);
+            }
+        }
+
+
     }
 
 
-
-
     protected void visibleBreakfastView() {
-        if (breakfastImages.getVisibility() == View.GONE)
-        {
+        if (breakfastImages.getVisibility() == View.GONE) {
             breakfastImages.setVisibility(View.VISIBLE);
             breakfastTexts.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             breakfastImages.setVisibility(View.GONE);
             breakfastTexts.setVisibility(View.GONE);
         }
     }
 
     protected void visibleLunchView() {
-        if (lunchRouLeiTitle.getVisibility() == View.GONE)
-        {
+        if (lunchRouLeiTitle.getVisibility() == View.GONE) {
             lunchRouLeiTitle.setVisibility(View.VISIBLE);
             lunchRouLeiImages.setVisibility(View.VISIBLE);
             lunchRouLeiGroup.setVisibility(View.VISIBLE);
@@ -202,8 +228,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
             lunchShuCaiImages.setVisibility(View.VISIBLE);
             lunchShuCaiTexts.setVisibility(View.VISIBLE);
 
-        }else
-        {
+        } else {
             lunchRouLeiTitle.setVisibility(View.GONE);
             lunchRouLeiImages.setVisibility(View.GONE);
             lunchRouLeiGroup.setVisibility(View.GONE);
@@ -215,35 +240,31 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
     }
 
     protected void visibleDinnerView() {
-        if (dinnerImages.getVisibility() == View.GONE)
-        {
+        if (dinnerImages.getVisibility() == View.GONE) {
             dinnerImages.setVisibility(View.VISIBLE);
             dinnerTexts.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             dinnerImages.setVisibility(View.GONE);
             dinnerTexts.setVisibility(View.GONE);
         }
     }
 
-    protected void weightOfRadioButton(RadioGroup radioGroup, @IdRes int i){
-        RadioGroup.LayoutParams Params ;
-        for (int position = 0 ; position < 7 ; position++)
-        {
+    protected void weightOfRadioButton(RadioGroup radioGroup, @IdRes int i) {
+        RadioGroup.LayoutParams Params;
+        for (int position = 0; position < TOTLE_DAYS; position++) {
             RadioButton dayButton = (RadioButton) radioGroup.getChildAt(position);
-            if(!dayButton.isChecked())
-            {
-                Params =(RadioGroup.LayoutParams) dayButton.getLayoutParams(); //取控件textView当前的布局参数
+            if (!dayButton.isChecked()) {
+                Params = (RadioGroup.LayoutParams) dayButton.getLayoutParams(); //取控件textView当前的布局参数
                 //Params.height = 20;// 控件的高强制设成20
-                Params.width = (int) (88*density);// 控件的宽强制设成30
+                Params.width = (int) (88 * density);// 控件的宽强制设成30
                 dayButton.setLayoutParams(Params);
             }
         }
 
-        RadioButton radioButton = (RadioButton)radioGroup.findViewById(i);
-        Params =(RadioGroup.LayoutParams) radioButton.getLayoutParams(); //取控件textView当前的布局参数
+        RadioButton radioButton = (RadioButton) radioGroup.findViewById(i);
+        Params = (RadioGroup.LayoutParams) radioButton.getLayoutParams(); //取控件textView当前的布局参数
         //Params.height = 20;// 控件的高强制设成20
-        Params.width = (int) (100*density);// 控件的宽强制设成30
+        Params.width = (int) (100 * density);// 控件的宽强制设成30
         radioButton.setLayoutParams(Params); //使设置好的布局参数应用到控件
         position = positionOfClickOnWeek(radioButton.getText().toString());
 
@@ -253,18 +274,15 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
      * 判读当天当天是否可以开餐
      */
     private void dayOfOpenMeal() {
-        for (int position = 0 ; position < 7 ;position++)
-        {
+        for (int position = 0; position < TOTLE_DAYS; position++) {
             // 不可以开饭的话,取反将对应的星期按钮设置为不可点击
-            if(!days.get(position).isOpenMeal())
-            {
+            if (!days.get(position).isOpenMeal()) {
                 weekGroup.getChildAt(position).setEnabled(false);
             }
         }
     }
 
     private void LoadingBreakfastOfMenu(int position) {
-
 
 
         // 1.先取出早餐菜单字符串,组合出图片
@@ -275,34 +293,24 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         String breakfasts[] = breakfast_meal.split(",");
         int size = breakfasts.length;
 
-//
-//        for (int j = 0 ; j < 5 ; j ++)
-//        {
-//            ImageView imageView = (ImageView) breakfastImages.getChildAt(j);
-//            imageView.setVisibility(View.GONE);
-//            TextView textView = (TextView) breakfastTexts.getChildAt(j);
-//            textView.setVisibility(View.GONE);
-//        }
-//
         breakfastImages.removeAllViews();
         breakfastTexts.removeAllViews();
 
 
-        for (int i = 0 ; i < size ; i++)
-        {
+        for (int i = 0; i < size; i++) {
             String mealImageString = breakfastImageHost + breakfasts[i] + ".jpg";
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,1);
-            layoutParams.setMargins(5,5,5,5);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+            layoutParams.setMargins(5, 5, 5, 5);
             ImageView imageView = new ImageView(getContext());
             imageView.setVisibility(View.VISIBLE);
-            GlideUtils.loadImage(3,mealImageString,imageView);
-            breakfastImages.addView(imageView,layoutParams);
+            GlideUtils.loadImage(3, mealImageString, imageView);
+            breakfastImages.addView(imageView, layoutParams);
             TextView textView = new TextView(getContext());
             textView.setVisibility(View.VISIBLE);
             textView.setGravity(Gravity.CENTER);
             textView.setBackgroundResource(R.drawable.textview_background);
             textView.setText(breakfasts[i]);
-            breakfastTexts.addView(textView,layoutParams);
+            breakfastTexts.addView(textView, layoutParams);
         }
     }
 
@@ -319,13 +327,11 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         RadioButton rb_firstMeat = (RadioButton) lunchRouLeiGroup.getChildAt(0);
         RadioButton rb_secondMeat = (RadioButton) lunchRouLeiGroup.getChildAt(1);
 
-        GlideUtils.loadImage(4,lunchAndDinnerImageHost+lunches[0]+".jpg",iv_firstMeat);
-        GlideUtils.loadImage(4,lunchAndDinnerImageHost+lunches[1]+".jpg",iv_secondMeat);
+        GlideUtils.loadImage(4, lunchAndDinnerImageHost + lunches[0] + ".jpg", iv_firstMeat);
+        GlideUtils.loadImage(4, lunchAndDinnerImageHost + lunches[1] + ".jpg", iv_secondMeat);
 
         rb_firstMeat.setText(lunches[0]);
         rb_secondMeat.setText(lunches[1]);
-
-
 
 
         // 后两个填充到蔬菜类
@@ -334,8 +340,8 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         TextView tv_firstVegetable = (TextView) lunchShuCaiTexts.getChildAt(0);
         TextView tv_secondVegetable = (TextView) lunchShuCaiTexts.getChildAt(1);
 
-        GlideUtils.loadImage(4,lunchAndDinnerImageHost+lunches[2]+".jpg",iv_firstVegetable);
-        GlideUtils.loadImage(4,lunchAndDinnerImageHost+lunches[3]+".jpg",iv_secondVegetable);
+        GlideUtils.loadImage(4, lunchAndDinnerImageHost + lunches[2] + ".jpg", iv_firstVegetable);
+        GlideUtils.loadImage(4, lunchAndDinnerImageHost + lunches[3] + ".jpg", iv_secondVegetable);
 
         tv_firstVegetable.setText(lunches[2]);
         tv_secondVegetable.setText(lunches[3]);
@@ -356,49 +362,41 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         TextView tv_firstMeat = (TextView) dinnerTexts.getChildAt(0);
         TextView tv_secondVegetable = (TextView) dinnerTexts.getChildAt(1);
 
-        GlideUtils.loadImage(4,lunchAndDinnerImageHost+dinners[0]+".jpg",iv_firstMeat);
-        GlideUtils.loadImage(4,lunchAndDinnerImageHost+dinners[1]+".jpg",iv_firstVegetable);
+        GlideUtils.loadImage(4, lunchAndDinnerImageHost + dinners[0] + ".jpg", iv_firstMeat);
+        GlideUtils.loadImage(4, lunchAndDinnerImageHost + dinners[1] + ".jpg", iv_firstVegetable);
 
         tv_firstMeat.setText(dinners[0]);
         tv_secondVegetable.setText(dinners[1]);
     }
 
     private int positionOfClickOnWeek(String day) {
-        if (day.equals("星期一"))
-        {
+        if (day.equals("星期一")) {
             isSelectedDay = true;
-            selected_date =days.get(0).getDay();
+            selected_date = days.get(0).getDay();
             return 0;
-        }else if (day.equals("星期二"))
-        {
+        } else if (day.equals("星期二")) {
             isSelectedDay = true;
-            selected_date =days.get(1).getDay();
+            selected_date = days.get(1).getDay();
             return 1;
-        }else if (day.equals("星期三"))
-        {
+        } else if (day.equals("星期三")) {
             isSelectedDay = true;
-            selected_date =days.get(2).getDay();
+            selected_date = days.get(2).getDay();
             return 2;
-        }else if (day.equals("星期四"))
-        {
+        } else if (day.equals("星期四")) {
             isSelectedDay = true;
-            selected_date =days.get(3).getDay();
+            selected_date = days.get(3).getDay();
             return 3;
-        }else if (day.equals("星期五"))
-        {
+        } else if (day.equals("星期五")) {
             isSelectedDay = true;
-            selected_date =days.get(4).getDay();
+            selected_date = days.get(4).getDay();
             return 4;
-        }
-        else if (day.equals("星期六"))
-        {
+        } else if (day.equals("星期六")) {
             isSelectedDay = true;
-            selected_date =days.get(5).getDay();
+            selected_date = days.get(5).getDay();
             return 5;
-        } else if (day.equals("星期日"))
-        {
+        } else if (day.equals("星期日")) {
             isSelectedDay = true;
-            selected_date =days.get(6).getDay();
+            selected_date = days.get(6).getDay();
             return 6;
         }
         return -1;
@@ -412,7 +410,7 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
     private DateOrderBean selectedDateOrderBean() {
         DateOrderBean.MealOrderBean mealOrderBean = dateOrderBean.getMeal_order().get(0);
         mealOrderBean.setDate(selected_date);
-        //mealOrderBean.setOrderTime("2017-12-25 11:00:00");
+        //mealOrderBean.setOrderTime("201TOTLE_DAYS-12-25 11:00:00");
         mealOrderBean.setBreakfast(cb_breakfast_status);
         mealOrderBean.setLunch(cb_lunch_status);
         mealOrderBean.setDinner(cb_dinner_status);
@@ -424,32 +422,28 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         breakfast_checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b)
-                {
-                    cb_breakfast_status = 1 ;
-                }else {
-                    cb_breakfast_status = 0 ;
+                if (b) {
+                    cb_breakfast_status = 1;
+                } else {
+                    cb_breakfast_status = 0;
                 }
             }
         });
         lunch_checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (!b)
+                if (!b) {
+                    cb_lunch_status = 0;
+                } else if (rb_lunch_status == 0 && b) // 表示没有选择午餐的肉类菜式
                 {
-                    cb_lunch_status = 0 ;
-                } else if(rb_lunch_status == 0 && b) // 表示没有选择午餐的肉类菜式
-                {
-                    cb_lunch_status = 0 ;
+                    cb_lunch_status = 0;
                     lunch_checkbox.setChecked(false);
                     Toast.makeText(getContext(), "请先选择午餐菜式", Toast.LENGTH_SHORT).show();
 
-                }else if (rb_lunch_status == 1 && b)
-                {
-                    cb_lunch_status = 1 ;
-                }else if (rb_lunch_status == 2 && b)
-                {
-                    cb_lunch_status = 2 ;
+                } else if (rb_lunch_status == 1 && b) {
+                    cb_lunch_status = 1;
+                } else if (rb_lunch_status == 2 && b) {
+                    cb_lunch_status = 2;
                 }
 
             }
@@ -457,12 +451,10 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         dinner_checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b)
-                {
-                    cb_dinner_status = 1 ;
-                }else
-                {
-                    cb_dinner_status = 0 ;
+                if (b) {
+                    cb_dinner_status = 1;
+                } else {
+                    cb_dinner_status = 0;
                 }
 
             }
@@ -474,22 +466,16 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         lunchRouLeiGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if(lunch_checkbox.isChecked())
-                {
-                    if (i == lunch_one_radioButton.getId())
-                    {
+                if (lunch_checkbox.isChecked()) {
+                    if (i == lunch_one_radioButton.getId()) {
                         cb_lunch_status = 1;
-                    }else if (i == lunch_two_radioButton.getId())
-                    {
+                    } else if (i == lunch_two_radioButton.getId()) {
                         cb_lunch_status = 2;
                     }
-                }else
-                {
-                    if (i == lunch_one_radioButton.getId())
-                    {
+                } else {
+                    if (i == lunch_one_radioButton.getId()) {
                         rb_lunch_status = 1;
-                    }else if (i == lunch_two_radioButton.getId())
-                    {
+                    } else if (i == lunch_two_radioButton.getId()) {
                         rb_lunch_status = 2;
                     }
                 }
@@ -497,7 +483,6 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
             }
         });
-
 
 
 //        lunch_one_radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -526,48 +511,41 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
 
         // 取出其中的mealOrder
         DateOrderBean.MealOrderBean mealOrder = dateOrderBean.getMeal_order().get(0);
-        if (mealOrder.getBreakfast() == 0)
-        {
-            cb_breakfast_status = 0 ;
+        if (mealOrder.getBreakfast() == 0) {
+            cb_breakfast_status = 0;
             breakfast_checkbox.setChecked(false);
 
-        }else if (mealOrder.getBreakfast() == 1)
-        {
-            cb_breakfast_status = 1 ;
+        } else if (mealOrder.getBreakfast() == 1) {
+            cb_breakfast_status = 1;
             breakfast_checkbox.setChecked(true);
 
         }
 
 
-        if (mealOrder.getLunch() == 0)
-        {
+        if (mealOrder.getLunch() == 0) {
             cb_lunch_status = 0;
             rb_lunch_status = 0;
             lunchRouLeiGroup.clearCheck();
             lunch_checkbox.setChecked(false);
 
-        }else if (mealOrder.getLunch() == 1)
-        {
-            rb_lunch_status = 1 ;
-            cb_lunch_status = 1 ;
+        } else if (mealOrder.getLunch() == 1) {
+            rb_lunch_status = 1;
+            cb_lunch_status = 1;
             lunchRouLeiGroup.check(lunch_one_radioButton.getId());
             lunch_checkbox.setChecked(true);
-        }else if (mealOrder.getLunch() == 2)
-        {
-            rb_lunch_status = 2 ;
-            cb_lunch_status = 2 ;
+        } else if (mealOrder.getLunch() == 2) {
+            rb_lunch_status = 2;
+            cb_lunch_status = 2;
             lunchRouLeiGroup.check(lunch_two_radioButton.getId());
             lunch_checkbox.setChecked(true);
         }
 
 
-        if (mealOrder.getDinner() == 0)
-        {
+        if (mealOrder.getDinner() == 0) {
             cb_dinner_status = 0;
             dinner_checkbox.setChecked(false);
 
-        }else if (mealOrder.getDinner() == 1)
-        {
+        } else if (mealOrder.getDinner() == 1) {
             cb_dinner_status = 1;
             dinner_checkbox.setChecked(true);
         }
@@ -579,7 +557,5 @@ public class MealFragment extends BaseFragment<MealPresenterImpl> implements Mea
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
         density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
     }
-
-
 
 }
