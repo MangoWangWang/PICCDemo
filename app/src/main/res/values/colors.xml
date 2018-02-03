@@ -80,5 +80,7 @@
     <color name="color_bg_normal">#ffffff</color>
     <color name="color_text_selected">#bc4141</color>
     <color name="color_text_normal">#7e7e7e</color>
+    <color name="menu_bt_false">#cff5c8</color>
+    <color name="menu_bt_nomal">#8bd799</color>
 
 </resources>

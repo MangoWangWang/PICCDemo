@@ -20,7 +20,7 @@ import rx.Observable;
 public interface SlideService {
 
     // 本地服务器请求地址的baseUrl
-   // String HOST = "http://10.0.10.187:8080/";
+    //String HOST = "http://10.0.10.127:8080/";
 
     // 阿里云服务器地址IP地址
     String HOST = "http://120.79.62.147:8080/PiccLife/";
@@ -31,7 +31,11 @@ public interface SlideService {
     @GET("servlet/UpdatePersonInfoServlet")
     Observable<String> updatePerSonInfo(@Query("cardNumber")String cardNumber,@Query("columnName")String columnName,@Query("data")String data);
 
-    // 请求菜单
+    /**
+     * 请求菜单()
+     * @param week  this: 代表当前星期   next: 代表下个星期
+     * @return
+     */
     @GET("servlet/GetMealStyleServlet")
     Observable<MealStyleBean> getMealStyleBean(@Query("week") String week);
 

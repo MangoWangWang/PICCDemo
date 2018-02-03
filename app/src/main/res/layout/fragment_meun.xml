@@ -119,7 +119,8 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="@string/breakfast"
-                    android:textColor="@drawable/radiobutton_text_color" />
+                    android:textColor="@color/colorPageBg"
+                    android:theme="@style/RedButton"/>
 
 
             </LinearLayout>
@@ -165,7 +166,8 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="@string/lunch"
-                    android:textColor="@drawable/radiobutton_text_color" />
+                    android:textColor="@color/colorPageBg"
+                    android:theme="@style/RedButton"/>
 
             </LinearLayout>
 
@@ -339,7 +341,8 @@
                     android:button="@null"
                     android:gravity="center"
                     android:text="@string/dinner"
-                    android:textColor="@drawable/radiobutton_text_color" />
+                    android:textColor="@color/colorPageBg"
+                    android:theme="@style/RedButton"/>
             </LinearLayout>
 
 

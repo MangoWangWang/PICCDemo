@@ -18,12 +18,17 @@ import rx.Observable;
 public interface OrderMealService {
 
     // 本地请求地址的baseUrl
-    //String HOST = "http://10.0.10.187:8080/";
+    //String HOST = "http://10.0.10.127:8080/";
 
     // 阿里云服务器地址IP地址
     String HOST = "http://120.79.62.147:8080/PiccLife/";
 
-    // 请求菜单
+
+    /**
+     * 请求菜单()
+     * @param week  this: 代表当前星期   next: 代表下个星期
+     * @return
+     */
     @GET("servlet/GetMealStyleServlet")
     Observable<MealStyleBean> getMealStyleBean(@Query("week") String week);
 

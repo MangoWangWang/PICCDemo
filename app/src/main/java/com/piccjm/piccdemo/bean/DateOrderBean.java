@@ -39,6 +39,7 @@ public class DateOrderBean {
          * breakfast : 1
          * lunch : 1
          * dinner : 1
+         * exist : true
          */
 
         private String date;
@@ -46,6 +47,15 @@ public class DateOrderBean {
         private int breakfast;
         private int lunch;
         private int dinner;
+        private boolean exist;
+
+        public boolean isExist() {
+            return exist;
+        }
+
+        public void setExist(boolean exist) {
+            this.exist = exist;
+        }
 
         public int getBreakfast() {
             return breakfast;
